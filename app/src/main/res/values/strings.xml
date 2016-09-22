@@ -1,4 +1,11 @@
 <resources>
     <string name="app_name">WrapUp</string>
     <string name="action_settings">Settings</string>
+    <string name="save">Save</string>
+    <string-array name="list_array">
+        <item>Einkaufsliste 1</item>
+        <item>Einkaufsliste 2</item>
+        <item>Einkaufsliste 3</item>
+    </string-array>
+
 </resources>
