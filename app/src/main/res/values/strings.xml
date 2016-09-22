@@ -7,5 +7,5 @@
         <item>Einkaufsliste 2</item>
         <item>Einkaufsliste 3</item>
     </string-array>
-
+    <string name="new_list">Neue Liste</string>
 </resources>
