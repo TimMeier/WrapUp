@@ -23,7 +23,6 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         final ListView lv_list = (ListView) findViewById(R.id.lv_list);
         setSupportActionBar(toolbar);
-        ListActivity.setMainList(lv_list);
     }
 
     @Override
