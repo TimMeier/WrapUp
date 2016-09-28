@@ -3,15 +3,12 @@ package com.enterprise.wrapup.wrapup;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ArrayAdapter;
+import android.view.View;
 import android.widget.ListView;
-import android.widget.TextView;
 // This is a Test
 
 public class MainActivity extends AppCompatActivity {
@@ -27,26 +24,6 @@ public class MainActivity extends AppCompatActivity {
         final ListView lv_list = (ListView) findViewById(R.id.lv_list);
         setSupportActionBar(toolbar);
         ListActivity.setMainList(lv_list);
-       FloatingActionButton btn_add = (FloatingActionButton) findViewById(R.id.btn_add);
-        btn_add.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                Intent myIntent = null;
-
-                myIntent = new Intent(view.getContext(), ListActivity.class);
-                startActivity(myIntent);
-
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-            }
-        });
-
-
-
-
-
-
     }
 
     @Override
@@ -72,7 +49,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-   public void  test(){
+   public void new_list(View v){
 
+       Intent myIntent = null;
+
+       myIntent = new Intent(v.getContext(), ListActivity.class);
+       startActivity(myIntent);
    }
+
 }
