@@ -24,10 +24,7 @@ public class ListActivity extends android.app.ListActivity {
     CustomAdapter adapter;
     ArrayList<String> items = new ArrayList(Arrays.asList("Apfel", "Ananas", "Nix"));
     ArrayList<String> menge = new ArrayList(Arrays.asList("2", "3", "4"));
-//    public String [] items={"Apfel", "Ananas", "Nix"};
-//    public String [] anzahl={"2", "3", "4"};
-    //RECORDING HOW MANY TIMES THE BUTTON HAS BEEN CLICKED
-    int clickCounter=0;
+
 
 
     public void onCreate(Bundle savedInstanceState) {
@@ -39,11 +36,6 @@ public class ListActivity extends android.app.ListActivity {
         setListAdapter(adapter);
         setContentView(R.layout.activity_list);
 
-
-//        adapter=new ArrayAdapter<String>(this,
-//                android.R.layout.simple_list_item_1,
-//                listItems);
-//        setListAdapter(adapter);
     }
 
     //METHOD WHICH WILL HANDLE DYNAMIC INSERTION
@@ -61,7 +53,7 @@ public class ListActivity extends android.app.ListActivity {
         startActivity(myIntent);
     }
     public void save(){
-        //
+
 
     }
 }

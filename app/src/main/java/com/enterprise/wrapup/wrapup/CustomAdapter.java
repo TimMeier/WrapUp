@@ -61,9 +61,7 @@ public class CustomAdapter extends BaseAdapter {
         holder.et_name = (EditText) rowView.findViewById(R.id.et_name);
         holder.et_anzahl = (EditText) rowView.findViewById(R.id.et_anzahl);
 
-        Log.d("Test" , "anzahl vorher id:" + holder.et_anzahl.getId());
-        Log.d("Test" , "name vorher id:" + holder.et_name.getId());
-        Log.d("Test" , "size:" + items.size() + "pos: " +position);
+
         if(position <= items.size()-1) {
             if (items.get(position) != null && menge.get(position) != null){
                 holder.et_name.setText(items.get(position));
@@ -78,61 +76,38 @@ public class CustomAdapter extends BaseAdapter {
         holder.et_anzahl.setId(position);
         holder.et_name.setId(position);
         holder.id = position;
-//        if (menge != null  && init) {
-//            holder.et_anzahl.setText(menge.get(position));
-//        } else {
-//            holder.et_anzahl.setText(null);
-//        }
+
 
         if(position == menge.size()-1){
-            Log.d("test", Boolean.toString(init));
             init = false;
         }
 
         holder.et_name.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
-/*
- * When focus is lost save the entered value for
- * later use
- */
                 if (!hasFocus) {
                     String name = ((EditText) v).getText()
                             .toString();
                     int id = holder.et_name.getId();
-                    Log.d("Test" , "name id:" + id);
-//                   int id = holder.id;
-//                    items.add(id, name);
-                    int i = 0;
-                    if (id <= items.size()){
-                        items.set(id, name);
-                    }else{
-                        items.add(name);
+                    try {
+                        if (id <= items.size()){
+                            items.set(id, name);
+                        }else{
+                            items.add(name);
+                        }
+                    }catch (Exception e){
+                        return;
                     }
-//                    for(String item : items){
-//                        if (item.equals(name)){
-//
-//                            holder.et_name.setText(name);
-//                            return;
-//                        }
-//                        i++;
-//                    }
 
-//                    items.add(itemIndex,name );
-//                    items.put(itemIndex, name);
 
                 }
             }
         });
+
         holder.et_anzahl.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
-/*
- * When focus is lost save the entered value for
- * later use
- */
                 if (!hasFocus) {
-                    int itemIndex = v.getId();
                     String anzahl = ((EditText) v).getText()
                             .toString();
 
@@ -142,22 +117,38 @@ public class CustomAdapter extends BaseAdapter {
                     }else{
                         menge.add(anzahl );
                     }
-//                    for(String item : menge){
-//                        if (item.equals(anzahl)){
-//                            menge.set(i, anzahl);
-//                            holder.et_anzahl.setText(anzahl);
-//                            return;
-//                        }
-//                        i++;
-//                    }
-
-//                    selItems.put(itemIndex, enteredPrice);
-
                 }
             }
         });
 
+
+        holder.et_name.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                edittext.setFocusableInTouchMode(true);
+                Log.d("request", " focus");
+                holder.et_name.requestFocus();
+            }
+        });
+        rowView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                int id = holder.et_anzahl.getId();
+                items.remove(id);
+                menge.remove(id);
+                v.requestFocus();
+                notifyDataSetChanged();
+                return true;
+            }
+        });
         return rowView;
+    }
+
+    public ArrayList<String> getItems(){
+        return items;
+    }
+    public ArrayList<String> getMenge(){
+        return menge;
     }
 
 }
