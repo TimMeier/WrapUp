@@ -16,13 +16,17 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        final ListView lv_list = (ListView) findViewById(R.id.lv_list);
         setSupportActionBar(toolbar);
-
+        ListActivity.setMainList(lv_list);
        FloatingActionButton btn_add = (FloatingActionButton) findViewById(R.id.btn_add);
         btn_add.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -32,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
 
                 myIntent = new Intent(view.getContext(), ListActivity.class);
                 startActivity(myIntent);
+
 //                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
 //                        .setAction("Action", null).show();
             }
@@ -40,10 +45,8 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-//        ListView lv_list = (ListView) findViewById(R.id.lv_list);
-//        String[] pages = getResources().getStringArray(R.array.list_array);
-//        lv_list.set;
-//        lv_list.setListAdapter(new ArrayAdapter<String>(this, R.layout.list_item, pages));
+
+
     }
 
     @Override
