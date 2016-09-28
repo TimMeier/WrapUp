@@ -16,17 +16,23 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginRight="10dp" />
+        android:layout_marginRight="10dp"
+        android:background="@android:color/transparent"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:maxLength="140"
         android:id="@+id/et_name"
-        android:layout_alignBottom="@+id/et_anzahl"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
         android:hint="Produkt"
-        android:layout_toStartOf="@+id/et_anzahl"
-        android:layout_marginLeft="10dp" />
+        android:background="@android:color/transparent"
+        android:layout_alignParentTop="true"
+        android:layout_toLeftOf="@+id/et_anzahl"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>
