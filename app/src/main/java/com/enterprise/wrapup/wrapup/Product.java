@@ -1,9 +1,11 @@
 package com.enterprise.wrapup.wrapup;
 
+import java.io.Serializable;
+
 /**
  * Created by admin on 22.09.2016.
  */
-public class Product {
+public class Product implements Serializable{
     private int productID;
     private String name;
     private String number;
