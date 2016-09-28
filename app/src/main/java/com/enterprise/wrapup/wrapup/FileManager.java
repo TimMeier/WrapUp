@@ -3,6 +3,7 @@ package com.enterprise.wrapup.wrapup;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -24,22 +25,55 @@ import org.json.JSONArray;
 public class FileManager extends Activity{
     private static String fileName="values.txt";
 
-    public String ToJson(ArrayList<List> lists){
+    public String toJson(ArrayList<List> lists){
         String json = new Gson().toJson(lists);
         return json;
     }
-//gjhg
+
+    public ArrayList<List> jsonToString(String json){
+        Gson gson = new Gson();
+        ArrayList<List> lists = gson.fromJson(json, ArrayList.class);
+        return lists;
+    }
+
     public void exportFile(String json){
         try {
             FileOutputStream file = openFileOutput(this.fileName, Context.MODE_PRIVATE);
             file.write(json.getBytes());
             file.close();
+
         }catch (IOException ex){
             //Errorausgabe
         }
     }
 
-    public void importFromFilet(){
+    public String importFromFile(){
+        try {
+            FileInputStream inputFile = openFileInput(this.fileName);
+            java.util.List<Byte> data = new ArrayList<Byte>();
+            while(true){
+                int b = inputFile.read();
+
+                if (b == -1){
+                    break;
+                }else{
+                    data.add((byte)b);
+                }
+            }
+            byte[] bytes = new byte[data.size()];
+
+            for(int i = 0; i < bytes.length; i++){
+                bytes[i] = data.get(i);
+            }
+
+            String json = new String(bytes);
+            Log.d("Meine App", json);
+
+            return json;
+        }catch(IOException ex){
+            Log.d("meineApp", ex.getMessage());
+            return ex.getMessage();
+        }
 
     }
 }

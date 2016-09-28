@@ -20,4 +20,9 @@ public class MainClass  implements Serializable {
     public void deleteList(int listId){
         this.lists.remove(listId);
     }
+
+    public void save(ArrayList<List> lists){
+        FileManager manager = new FileManager();
+        manager.exportFile(manager.toJson(lists));
+    }
 }
