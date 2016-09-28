@@ -28,7 +28,7 @@ public class FileManager extends Activity{
         String json = new Gson().toJson(lists);
         return json;
     }
-
+//gjhg
     public void exportFile(String json){
         try {
             FileOutputStream file = openFileOutput(this.fileName, Context.MODE_PRIVATE);
