@@ -9,6 +9,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * Created by admin on 22.09.2016.
@@ -21,17 +22,20 @@ public class ListActivity extends android.app.ListActivity {
     //DEFINING A STRING ADAPTER WHICH WILL HANDLE THE DATA OF THE LISTVIEW
 
     CustomAdapter adapter;
-    public String [] items={"", "", ""};
+    ArrayList<String> items = new ArrayList(Arrays.asList("Apfel", "Ananas", "Nix"));
+    ArrayList<String> menge = new ArrayList(Arrays.asList("2", "3", "4"));
+//    public String [] items={"Apfel", "Ananas", "Nix"};
+//    public String [] anzahl={"2", "3", "4"};
     //RECORDING HOW MANY TIMES THE BUTTON HAS BEEN CLICKED
     int clickCounter=0;
 
-    private static ListView lv_list;
+
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         listItems.add("");
         listItems.add("");
         listItems.add("");
-        adapter = new CustomAdapter(this, listItems);
+        adapter = new CustomAdapter(this, items, menge);
         setListAdapter(adapter);
         setContentView(R.layout.activity_list);
 
@@ -42,13 +46,10 @@ public class ListActivity extends android.app.ListActivity {
 //        setListAdapter(adapter);
     }
 
-
-    public static void setMainList(ListView lv){
-        lv_list = lv;
-    }
     //METHOD WHICH WILL HANDLE DYNAMIC INSERTION
     public void addItems(View v) {
-        listItems.add("");
+        items.add("");
+        menge.add("");
         adapter.notifyDataSetChanged();
 
     }
@@ -59,8 +60,8 @@ public class ListActivity extends android.app.ListActivity {
         myIntent = new Intent(v.getContext(), LocationActivity.class);
         startActivity(myIntent);
     }
-//    public void save(){
-//        lv_list.add
-//
-//    }
+    public void save(){
+        //
+
+    }
 }
