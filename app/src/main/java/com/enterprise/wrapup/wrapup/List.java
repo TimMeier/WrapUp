@@ -15,4 +15,8 @@ public class List {
     public void addProductToList(Product product){
         this.products.add(product);
     }
+
+    public void replaceList(ArrayList<Product> products){
+        this.products = products;
+    }
 }
