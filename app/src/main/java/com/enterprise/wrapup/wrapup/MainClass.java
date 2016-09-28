@@ -40,9 +40,10 @@ public class MainClass  implements Serializable {
         manager.exportFile(manager.toJson(lists));
     }
 
-    public void mappToBackend(ArrayList<String> names, ArrayList<String> numbers, ArrayList<Boolean> bools){
+    public void mappToBackend(ArrayList<String> names, ArrayList<String> numbers, ArrayList<Boolean> bools, String listname){
         int i = 0;
         List list = new List();
+        list.setName(listname);
         for (String name : names){
             Product product = new Product();
             product.setName(name);

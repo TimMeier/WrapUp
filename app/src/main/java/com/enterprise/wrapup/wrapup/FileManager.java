@@ -3,12 +3,14 @@ package com.enterprise.wrapup.wrapup;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.os.Environment;
 import android.util.Log;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -38,9 +40,25 @@ public class FileManager extends Activity{
 
     public void exportFile(String json){
         try {
-            FileOutputStream file = openFileOutput(this.fileName, Context.MODE_PRIVATE);
-            file.write(json.getBytes());
-            file.close();
+            // this will create a new name everytime and unique
+            File root = new File(Environment.getExternalStorageDirectory(), "Notes");
+            if (!root.exists()) {
+                root.mkdirs(); // this will create folder.
+            }
+            File filepath = new File(root, fileName + ".txt");  // file path to save
+//            FileOutputStream file = openFileOutput(this.fileName, Context.MODE_PRIVATE);
+//            file.write(json.getBytes());
+//            file.close();
+
+
+            FileWriter writer = new FileWriter(filepath);
+
+            writer.append(json);
+
+            writer.flush();
+
+            writer.close();
+
 
         }catch (IOException ex){
             //Errorausgabe
