@@ -8,6 +8,7 @@ import java.util.ArrayList;
  */
 public class List implements Serializable {
     private ArrayList<Product> products;
+    private String Name;
 
     public ArrayList<Product> getProducts() {
         return products;
@@ -15,6 +16,14 @@ public class List implements Serializable {
 
     public void addProductToList(Product product){
         this.products.add(product);
+    }
+
+    public String getName() {
+        return Name;
+    }
+
+    public void setName(String name) {
+        Name = name;
     }
 
     public void replaceList(ArrayList<Product> products){

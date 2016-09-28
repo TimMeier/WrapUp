@@ -1,6 +1,7 @@
 package com.enterprise.wrapup.wrapup;
 
 import java.io.Serializable;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 /**
@@ -8,6 +9,19 @@ import java.util.ArrayList;
  */
 public class MainClass  implements Serializable {
     private ArrayList<List> lists;
+    private ArrayList<String> lists_String;
+
+    public MainClass(){
+        if (lists == null)
+            return;
+        for(List list : this.lists){
+            this.lists_String.add(list.getName());
+        }
+    }
+
+    public ArrayList<List> getLists() {
+        return lists;
+    }
 
     public void changeList(List list, int listId){
         this.lists.set(listId, list);
@@ -53,5 +67,21 @@ public class MainClass  implements Serializable {
         }
 
         this.lists.add(list);
+    }
+
+    public void mappBackendToFrontEnd(ArrayList<Product> list){
+        ArrayList<String> names = new ArrayList<>();
+        ArrayList<String> numbers = new ArrayList<>();
+        ArrayList<Boolean> bools = new ArrayList<>();
+
+        for(Product product:list){
+            names.add(product.getName());
+            numbers.add(product.getNumber());
+            bools.add(product.getBuyed());
+        }
+    }
+
+    public ArrayList<String> getLists_String() {
+        return lists_String;
     }
 }

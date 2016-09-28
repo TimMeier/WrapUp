@@ -8,6 +8,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 // This is a Test
 
@@ -21,7 +22,22 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        final ListView lv_list = (ListView) findViewById(R.id.lv_list);
+        //liste erstellen
+        MainClass obj = new MainClass();
+        /*List list1 = new List();
+        list1.setName("Liste 1");
+        obj.addListToLists(list1);
+        List list2 = new List();
+        list1.setName("Liste 2");
+        obj.addListToLists(list2);
+
+        ListView lv = (ListView) findViewById(R.id.lv_list);
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
+                this,
+                android.R.layout.simple_list_item_1,
+                obj.getLists_String());
+
+        lv.setAdapter(arrayAdapter);*/
         setSupportActionBar(toolbar);
     }
 
