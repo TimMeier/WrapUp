@@ -10,6 +10,11 @@ public class List implements Serializable {
     private ArrayList<Product> products;
     private String Name;
 
+
+    public List(){
+        this.products = new ArrayList<Product>();
+    }
+
     public ArrayList<Product> getProducts() {
         return products;
     }

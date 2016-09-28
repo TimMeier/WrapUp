@@ -24,20 +24,14 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         //liste erstellen
         MainClass obj = new MainClass();
-        /*List list1 = new List();
-        list1.setName("Liste 1");
-        obj.addListToLists(list1);
-        List list2 = new List();
-        list1.setName("Liste 2");
-        obj.addListToLists(list2);
-
-        ListView lv = (ListView) findViewById(R.id.lv_list);
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
-                this,
-                android.R.layout.simple_list_item_1,
-                obj.getLists_String());
-
-        lv.setAdapter(arrayAdapter);*/
+// // TODO: 28.09.2016 JSON->List parser(List mit namen, produkte, anzahl und gekauft. Diese Liste muss geladen werden!
+//        ListView lv = (ListView) findViewById(R.id.lv_list);
+//        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
+//                this,
+//                android.R.layout.simple_list_item_1,
+//                obj.getLists_String());
+//
+//        lv.setAdapter(arrayAdapter);
         setSupportActionBar(toolbar);
     }
 

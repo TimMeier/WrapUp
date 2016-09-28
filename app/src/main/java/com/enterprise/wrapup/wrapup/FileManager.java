@@ -14,6 +14,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -24,7 +25,7 @@ import org.json.JSONArray;
 /**
  * Created by admin on 22.09.2016.
  */
-public class FileManager extends Activity{
+public class FileManager{
     private static String fileName="values.txt";
 
     public String toJson(ArrayList<List> lists){
@@ -38,36 +39,27 @@ public class FileManager extends Activity{
         return lists;
     }
 
-    public void exportFile(String json){
+    public boolean exportFile(String json, Context context){
         try {
             // this will create a new name everytime and unique
             File root = new File(Environment.getExternalStorageDirectory(), "Notes");
             if (!root.exists()) {
                 root.mkdirs(); // this will create folder.
             }
-            File filepath = new File(root, fileName + ".txt");  // file path to save
-//            FileOutputStream file = openFileOutput(this.fileName, Context.MODE_PRIVATE);
-//            file.write(json.getBytes());
-//            file.close();
 
-
-            FileWriter writer = new FileWriter(filepath);
-
-            writer.append(json);
-
-            writer.flush();
-
-            writer.close();
-
-
+            OutputStreamWriter  file = new OutputStreamWriter(context.openFileOutput(this.fileName, Context.MODE_PRIVATE));
+            file.write(json);
+            file.close();
+            return true;
         }catch (IOException ex){
-            //Errorausgabe
+            Log.d("Fehler",  "" + ex);
+            return false;
         }
     }
 
-    public String importFromFile(){
+    public String importFromFile(Context context){
         try {
-            FileInputStream inputFile = openFileInput(this.fileName);
+            FileInputStream inputFile = context.openFileInput(this.fileName);
             java.util.List<Byte> data = new ArrayList<Byte>();
             while(true){
                 int b = inputFile.read();

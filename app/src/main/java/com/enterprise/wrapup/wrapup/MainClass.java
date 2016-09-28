@@ -12,8 +12,10 @@ public class MainClass  implements Serializable {
     private ArrayList<String> lists_String;
 
     public MainClass(){
-        if (lists == null)
-            return;
+        if (lists == null){
+            lists = new ArrayList<List>();
+        }
+
         for(List list : this.lists){
             this.lists_String.add(list.getName());
         }
@@ -35,10 +37,10 @@ public class MainClass  implements Serializable {
         this.lists.remove(listId);
     }
 
-    public void save(ArrayList<List> lists){
-        FileManager manager = new FileManager();
-        manager.exportFile(manager.toJson(lists));
-    }
+//    public void save(ArrayList<List> lists){
+//        FileManager manager = new FileManager();
+//        manager.exportFile(manager.toJson(lists));
+//    }
 
     public void mappToBackend(ArrayList<String> names, ArrayList<String> numbers, ArrayList<Boolean> bools, String listname){
         int i = 0;

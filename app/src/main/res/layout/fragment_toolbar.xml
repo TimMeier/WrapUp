@@ -2,18 +2,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent">
 
-    <EditText
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/tv_name"
-        android:inputType="text"
-        android:layout_alignParentTop="true"
-        android:layout_toLeftOf="@+id/btn_save"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:hint="@string/new_list"
-        />
-
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -28,6 +16,19 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="false"
         android:layout_alignParentStart="false"
-        android:layout_marginRight="@dimen/abc_text_size_small_material"
-        android:onClick="save" />
+        android:layout_marginRight="20dp"
+        android:layout_alignParentLeft="false" />
+
+    <EditText
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_name"
+        android:inputType="text"
+        android:hint="@string/new_list"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="20dp" />
+    <!--android:onClick="save" -->
+        />
 </RelativeLayout>
