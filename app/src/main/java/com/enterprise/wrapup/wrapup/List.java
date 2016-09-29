@@ -34,4 +34,8 @@ public class List implements Serializable {
     public void replaceList(ArrayList<Product> products){
         this.products = products;
     }
+
+    public int size(){
+        return this.products.size();
+    }
 }

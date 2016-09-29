@@ -22,6 +22,7 @@ public class CustomAdapter extends BaseAdapter {
     private static LayoutInflater inflater = null;
     private boolean init = true;
 
+
     public CustomAdapter(ListActivity mainActivity, ArrayList<String> items, ArrayList<String> anzahl) {
         // TODO Auto-generated constructor stub
         this.items = items;
@@ -55,7 +56,7 @@ public class CustomAdapter extends BaseAdapter {
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
         // TODO Auto-generated method stub
-        final Holder holder = new Holder();
+        final Holder  holder = new Holder();
         View rowView;
         rowView = inflater.inflate(R.layout.listitems, null);
         holder.et_name = (EditText) rowView.findViewById(R.id.et_name);
@@ -73,14 +74,17 @@ public class CustomAdapter extends BaseAdapter {
 
 
         }
-        holder.et_anzahl.setId(position);
-        holder.et_name.setId(position);
-        holder.id = position;
+
 
 
         if(position == menge.size()-1){
             init = false;
         }
+//        if(init){
+            holder.et_anzahl.setId(position);
+            holder.et_name.setId(position);
+            holder.id = position;
+//        }
 
         holder.et_name.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
@@ -115,7 +119,7 @@ public class CustomAdapter extends BaseAdapter {
                     if (id <= menge.size()){
                         menge.set(id, anzahl);
                     }else{
-                        menge.add(anzahl );
+                        menge.add(anzahl);
                     }
                 }
             }
@@ -136,7 +140,7 @@ public class CustomAdapter extends BaseAdapter {
                 int id = holder.et_anzahl.getId();
                 items.remove(id);
                 menge.remove(id);
-                v.requestFocus();
+//                v.requestFocus();
                 notifyDataSetChanged();
                 return true;
             }

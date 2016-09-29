@@ -15,10 +15,12 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.OutputStreamWriter;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
+import com.google.gson.reflect.TypeToken;
 
 import org.json.JSONArray;
 
@@ -35,7 +37,8 @@ public class FileManager{
 
     public ArrayList<List> jsonToString(String json){
         Gson gson = new Gson();
-        ArrayList<List> lists = gson.fromJson(json, ArrayList.class);
+        Type t = new TypeToken<ArrayList<List>>(){}.getType();
+        ArrayList<List> lists = gson.fromJson(json, t);
         return lists;
     }
 
@@ -82,7 +85,7 @@ public class FileManager{
             return json;
         }catch(IOException ex){
             Log.d("meineApp", ex.getMessage());
-            return ex.getMessage();
+            return null;
         }
 
     }
